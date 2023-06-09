@@ -27,15 +27,16 @@ biblio-style: apalike
 abstract: |
   Bu makalede, İstanbul ilindeki bölgesel trafik yoğunluğunun araç hızları ve sayıları üzerinden nasıl dağıldığı incelenmektedir. Araştırma, yoğun trafik bölgelerinde araç hızlarının düşük olduğunu ve araç sayılarının yüksek olduğunu ortaya koymaktadır. Bu durum, seyahat sürelerinin uzamasına, trafik kazalarının artmasına ve sürücülerin stres düzeylerinin yükselmesine neden olmaktadır. Araştırma sonuçları, İstanbul'un trafik yönetimi ve planlaması için önemli bir bilgi kaynağı sunmaktadır. Bu çalışma, bölgesel trafik yoğunluğunun anlaşılmasına ve etkili politikaların geliştirilmesine katkı sağlamaktadır. İstanbul ilindeki trafik sorunlarına çözüm odaklı yaklaşım için bu araştırmanın sonuçları değerli bir kaynak olacaktır.
 ---
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = FALSE, echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
 <!-- ======================================================================= -->
-<!-- ============================== NOTLAR ================================= -->
-<!-- ======================================================================= -->
-[^1]: 21080744, [Github Repo](https://github.com/slymanb/final_01.git)
 
+<!-- ============================== NOTLAR ================================= -->
+
+<!-- ======================================================================= -->
 
 # Giriş
 
@@ -47,14 +48,13 @@ Bu çalışmanın temel amacı, İstanbul ilindeki bölgesel trafik yoğunluğun
 
 Bu araştırma, İstanbul'un farklı bölgelerindeki trafik yoğunluğunun analiz edilmesini ve bu yoğunluğun araçların hızlarını ve sayılarını nasıl etkilediğinin belirlenmesini amaçlamaktadır. Araştırma sürecinde, çeşitli bölgesel trafik noktalarında veriler toplanacak ve analiz edilecektir. Bu veriler, trafik yoğunluğu, araç hızları ve araç sayıları gibi faktörleri içermektedir.
 
-
-## Literatür 
+## Literatür
 
 Yapılan literatür araştırmasında verinin kullanımında Yapay Zeka Algoritmaları, Bulanık Mantık Yaklaşımı gibi çeşitli yöntemlerden faydalanıldığı görülmüştür. Bunun yanı sıra İstanbul özelinde kentsel büyümeye bağlı olarak artan konut sayısının ana ulaşım ağında yarattığı trafik yoğunluğu ilişkisinin incelendiği görülmüştür.
 
 Çeşitli nedenlerle artan araç sayısı, trafik sıkışıklığını ve bunun sonucunda karbondioksit emisyonu, zaman kaybı, akaryakıt ve enerji tüketimi gibi olumsuzlukları beraberinde getirmektedir. Trafik sıkışıklığı, kesişen yol kesimlerinde zirve değerine ulaşmaktadır. Özellikle büyük kentlerin kavşaklarında meydana gelen sorunlara çözüm sunmak amacıyla kullanılan temel denetim yöntemlerinden biri sinyal kontrolüdür. Sinyalizasyon; döngü uzunluğu, kavşak kapasitesi, araç gecikmesi ve diğer göstergeler üzerinde önemli etkisi olan faktörlerden biridir. Bu denli önemli bir faktörün işlevsel olabilmesi için kavşak kollarında araç gruplarına verilen geçiş hakkı doğru zamanlama ile yapılması oldukça büyük bir öneme sahiptir. Mevcut sabit süreli kontrol sistemleri zaman içerisinde hızlı kent yaşamına yetersiz gelmeye başladığından adaptif yöntemlerin kullanılmasına yönelik bir eğilim vardır. Günümüzde adaptif yöntemlerin en yaygın kullanımı, uzman sistemler aracılığı ile yapılan uygulamalardır. Bu uzman sistemlerden biri de Bulanık Mantık yaklaşımıdır [@gurer2019bulanik].
 
-Diğer yandan, @article{tacs2020yapay çalışmalarında verileri, Yandex Trafik ve Wunderground internet sitelerinden elde etmiştir. Hafta içi günler, mesai saatleri, havanın genel durumu, sıcaklık, rüzgârın hızı ve nem seviyeleri bağımsız değişken olarak alınmıştır. Gün, saat ve hava koşulu değişkenleri kategoriktir ve bu değişkenler kukla değişken olarak belirlenmiştir. Bağımsız değişkenlerden hareketle hız tahmini yapılmış ve trafik yoğunluğu seviyesi belirlenmeye çalışılmıştır. Diğer bağımsız değişkenlere kıyasla, rüzgar hızı ve sıcaklık değişkenlerinin hız üzerinde negatif ve yüksek oranda etkili olduğu, olası bir değişiklik durumunda sıcaklığın hızı en yüksek düzeyde etkileyeceği görülmüştür. Çalışmanın bulgularına göre hız bağımlı değişkeni ve, rüzgar hızı (-.645) bağımsız değişkeni arasında 0.05 anlamlılık düzeyinde, sıcaklık (.-714) bağımsız değişkeni ile de 0.01 anlamlılık düzeyinde yüksek bir korelasyon varken, nem (.308), saat (.307) ve hava durumu (.205) bağımsız değişkenleri ile de yine düzeyinde fakat zayıf bir düzeyde korelasyon vardır [@tacs2020yapay].
+Diğer yandan, @tacs2020yapay çalışmalarında verileri, Yandex Trafik ve Wunderground internet sitelerinden elde etmiştir. Hafta içi günler, mesai saatleri, havanın genel durumu, sıcaklık, rüzgârın hızı ve nem seviyeleri bağımsız değişken olarak alınmıştır. Gün, saat ve hava koşulu değişkenleri kategoriktir ve bu değişkenler kukla değişken olarak belirlenmiştir. Bağımsız değişkenlerden hareketle hız tahmini yapılmış ve trafik yoğunluğu seviyesi belirlenmeye çalışılmıştır. Diğer bağımsız değişkenlere kıyasla, rüzgar hızı ve sıcaklık değişkenlerinin hız üzerinde negatif ve yüksek oranda etkili olduğu, olası bir değişiklik durumunda sıcaklığın hızı en yüksek düzeyde etkileyeceği görülmüştür. Çalışmanın bulgularına göre hız bağımlı değişkeni ve, rüzgar hızı (-.645) bağımsız değişkeni arasında 0.05 anlamlılık düzeyinde, sıcaklık (.-714) bağımsız değişkeni ile de 0.01 anlamlılık düzeyinde yüksek bir korelasyon varken, nem (.308), saat (.307) ve hava durumu (.205) bağımsız değişkenleri ile de yine düzeyinde fakat zayıf bir düzeyde korelasyon vardır [@tacs2020yapay].
 
 Bu araştırmada, araç geçiş sayısının fazla olduğu bir karayolunda hız tahmini yapılarak, bu tahmin üzerinden ilgili yolda yaşanabilecek olası trafik yoğunluğunun tespit edilmesi amaçlanmıştır. Bağımlı değişken hız iken; bağımsız değişken olarak; sıcaklık, nem ve rüzgar hızı, hafta içi günler, gözlem yapılan mesai saatleri ve hava koşulu değişkenleri kullanılmıştır. Gün, saat ve hava koşulu kategorik değişkenleri; dummy değişken (kukla değişken) olarak belirlenmiş ve böylece toplamda 28 bağımsız değişken elde edilmiştir. Model 2 tane gizli katmanlı olarak düşünülmüştür. Böylece modelde, bağımsız değişkenlerden oluşan 28 girdi katmanı, 25' li olmak üzere 2 tane gizli katman, 1 tane de çıktı katmanı mevcuttur.
 
@@ -64,18 +64,19 @@ Trafik yoğunluğu @raj2016application 'nin çalışmasında belirli bir karayol
 
 @al2016traffic tarafından hazırlanmış olan bu makalede, akıllı telefonların trafik yoğunluğunu ve hızını ölçmek için kullanılan yeni bir uygulama tanıtılmaktadır. Bu sistemde, iki araç arasında yer alan gözlemci tarafından araç sayımı gerçekleştirilir. Bu sayım, izleme verileriyle birlikte "ölçülen" yoğunluk ve "ölçülen" hız değerlerini verir. Seyahat hızı ve manuel trafik sayımları kullanılarak "hesaplanan" yoğunluk hesaplanır. Ölçülen yoğunluk, hesaplanan yoğunlukla karşılaştırılarak doğrulanır ve istatistiksel t-testi, iki yoğunluk arasındaki ortalama farkın %5 düzeyinde anlamlı olmadığını doğrular.
 
-Aşağıdaki wordcloud çalışmasıyla literatürün metinsel analizine ilişkin modelleme yapılmıştır. 
+Aşağıdaki wordcloud çalışmasıyla literatürün metinsel analizine ilişkin modelleme yapılmıştır. Wordcloud ingilizce temelli bir kütüphane olduğundan "ve", "ile" gibi bağlaçlar cümlelerden çıkarılmaya çalışılmıştır. Buna ilişkin veriye "final_01_files\figure-latex" dosyasından da erişilebilmektedir.
 
-
-```{r}
+```{r WORDCLOUD}
 
 library(wordcloud)
 
-# Example text
-text <- "Yapılan literatür araştırmasında verinin kullanımında Yapay Zeka Algoritmaları, Bulanık Mantık Yaklaşımı gibi çeşitli yöntemlerden faydalanıldığı görülmüştür. Çeşitli nedenlerle artan araç sayısı, trafik sıkışıklığını ve bunun sonucunda karbondioksit emisyonu, zaman kaybı, akaryakıt ve enerji tüketimi gibi olumsuzlukları beraberinde getirmektedir. Trafik sıkışıklığı, kesişen yol kesimlerinde zirve değerine ulaşmaktadır. Özellikle büyük kentlerin kavşaklarında meydana gelen sorunlara çözüm sunmak amacıyla kullanılan temel denetim yöntemlerinden biri sinyal kontrolüdür. Sinyalizasyon; döngü uzunluğu, kavşak kapasitesi, araç gecikmesi ve diğer göstergeler üzerinde önemli etkisi olan faktörlerden biridir. Bu denli önemli bir faktörün işlevsel olabilmesi için kavşak kollarında araç gruplarına verilen geçiş hakkı doğru zamanlama ile yapılması oldukça büyük bir öneme sahiptir. Mevcut sabit süreli kontrol sistemleri zaman içerisinde hızlı kent yaşamına yetersiz gelmeye başladığından adaptif yöntemlerin kullanılmasına yönelik bir eğilim vardır. Günümüzde adaptif yöntemlerin en yaygın kullanımı, uzman sistemler aracılığı ile yapılan uygulamalardır. Bu uzman sistemlerden biri de Bulanık Mantık yaklaşımıdır [@gurer2019bulanik].Diğer yandan, @article{tacs2020yapay çalışmalarında verileri, Yandex Trafik ve Wunderground internet sitelerinden elde etmiştir. Hafta içi günler, mesai saatleri, havanın genel durumu, sıcaklık, rüzgârın hızı ve nem seviyeleri bağımsız değişken olarak alınmıştır. Gün, saat ve hava koşulu değişkenleri kategoriktir ve bu değişkenler kukla değişken olarak belirlenmiştir. Bağımsız değişkenlerden hareketle hız tahmini yapılmış ve trafik yoğunluğu seviyesi belirlenmeye çalışılmıştır. Diğer bağımsız değişkenlere kıyasla, rüzgar hızı ve sıcaklık değişkenlerinin hız üzerinde negatif ve yüksek oranda etkili olduğu, olası bir değişiklik durumunda sıcaklığın hızı en yüksek düzeyde etkileyeceği görülmüştür. Çalışmanın bulgularına göre hız bağımlı değişkeni ve, rüzgar hızı (-.645) bağımsız değişkeni arasında 0.05 anlamlılık düzeyinde, sıcaklık (.-714) bağımsız değişkeni ile de 0.01 anlamlılık düzeyinde yüksek bir korelasyon varken, nem (.308), saat (.307) ve hava durumu (.205) bağımsız değişkenleri ile de yine düzeyinde fakat zayıf bir düzeyde korelasyon vardır [@tacs2020yapay].Bu araştırmada, araç geçiş sayısının fazla olduğu bir karayolunda hız tahmini yapılarak, bu tahmin üzerinden ilgili yolda yaşanabilecek olası trafik yoğunluğunun tespit edilmesi amaçlanmıştır. Bağımlı değişken hız iken; bağımsız değişken olarak; sıcaklık, nem ve rüzgar hızı, hafta içi günler, gözlem yapılan mesai saatleri ve hava koşulu değişkenleri kullanılmıştır. Gün, saat ve hava koşulu kategorik değişkenleri; dummy değişken (kukla değişken) olarak belirlenmiş ve böylece toplamda 28 bağımsız değişken elde edilmiştir. Model 2 tane gizli katmanlı olarak düşünülmüştür. Böylece modelde, bağımsız değişkenlerden oluşan 28 girdi katmanı, 25' li olmak üzere 2 tane gizli katman, 1 tane de çıktı katmanı mevcuttur.Bir başka örnekte; 2005-2014 yılları arasında kentsel büyümeye bağlı olarak artan konut sayısının ana ulaşım ağında yarattığı trafik yoğunluğu ilişkisi İstanbul özelinde incelenmiştir. Bu amaçla İstanbul’da kentsel büyümenin yoğun olarak görüldüğü ilçeler (Konut bölgeleri) ile bu ilçeleri etkileyen ana ulaşım hatları belirlenmiştir. Geleceğe yönelik tahmin modellerinde kullanılabilen konut sayısı ile trafik yoğunluğu arasındaki ilişkiyi belirlemek amacıyla regresyon analizi yapılmış ve korelasyon katsayıları hesaplanmıştır. Analizler neticesinde, Avrupa yakasında özellikle Büyükçekmece, Beylikdüzü, Esenyurt ve Avcılar ilçelerindeki kentsel büyümeye bağlı olarak artan konutlaşmanın beraberinde trafik yoğunluğunu da getirdiği gözlemlenmektedir. Anadolu yakasında ise Sultanbeyli, Pendik ve Tuzla ilçelerinde son yıllardaki artan konutlaşmaya bağlı olarak bu ilçeleri etkileyen ana ulaşım hatlarında trafik yoğunluğunda artış olduğu gözlemlenmektedir [@polat2017kentsel].Trafik yoğunluğu @raj2016application 'nin çalışmasında belirli bir karayolu uzunluğunu işgal eden araç sayısını hesaplamak için otomatik sensörlerden elde edilen verilerle modeller geliştirme yöntemini kullanmıştır. Bu çalışmada tahmin için kullanılan teknikler iki makine öğrenme tekniğine dayanmaktadır: yapay sinir ağları (YSA) ve k-en yakın komşu (kNN).@al2016traffic tarafından hazırlanmış olan bu makalede, akıllı telefonların trafik yoğunluğunu ve hızını ölçmek için kullanılan yeni bir uygulama tanıtılmaktadır. Bu sistemde, iki araç arasında yer alan gözlemci tarafından araç sayımı gerçekleştirilir. Bu sayım, izleme verileriyle birlikte ölçülen yoğunluk ve ölçülen hız değerlerini verir. Seyahat hızı ve manuel trafik sayımları kullanılarak hesaplanan yoğunluk hesaplanır. Ölçülen yoğunluk, hesaplanan yoğunlukla karşılaştırılarak doğrulanır ve istatistiksel t-testi, iki yoğunluk arasındaki ortalama farkın %5 düzeyinde anlamlı olmadığını doğrular. "
+turkish_stopwords <- c("ve", "ile")
 
-# Split the text into individual words
-words <- strsplit(text, "\\s+")
+# Literatür taraması metnim
+text <- c("Yapılan literatür araştırmasında verinin kullanımında Yapay Zeka Algoritmaları, Bulanık Mantık Yaklaşımı gibi çeşitli yöntemlerden faydalanıldığı görülmüştür. Çeşitli nedenlerle artan araç sayısı, trafik sıkışıklığını ve bunun sonucunda karbondioksit emisyonu, zaman kaybı, akaryakıt ve enerji tüketimi gibi olumsuzlukları beraberinde getirmektedir. Trafik sıkışıklığı, kesişen yol kesimlerinde zirve değerine ulaşmaktadır. Özellikle büyük kentlerin kavşaklarında meydana gelen sorunlara çözüm sunmak amacıyla kullanılan temel denetim yöntemlerinden biri sinyal kontrolüdür. Sinyalizasyon; döngü uzunluğu, kavşak kapasitesi, araç gecikmesi ve diğer göstergeler üzerinde önemli etkisi olan faktörlerden biridir. Bu denli önemli bir faktörün işlevsel olabilmesi için kavşak kollarında araç gruplarına verilen geçiş hakkı doğru zamanlama ile yapılması oldukça büyük bir öneme sahiptir. Mevcut sabit süreli kontrol sistemleri zaman içerisinde hızlı kent yaşamına yetersiz gelmeye başladığından adaptif yöntemlerin kullanılmasına yönelik bir eğilim vardır. Günümüzde adaptif yöntemlerin en yaygın kullanımı, uzman sistemler aracılığı ile yapılan uygulamalardır. Bu uzman sistemlerden biri de Bulanık Mantık yaklaşımıdır [@gurer2019bulanik].Diğer yandan, @article{tacs2020yapay çalışmalarında verileri, Yandex Trafik ve Wunderground internet sitelerinden elde etmiştir. Hafta içi günler, mesai saatleri, havanın genel durumu, sıcaklık, rüzgârın hızı ve nem seviyeleri bağımsız değişken olarak alınmıştır. Gün, saat ve hava koşulu değişkenleri kategoriktir ve bu değişkenler kukla değişken olarak belirlenmiştir. Bağımsız değişkenlerden hareketle hız tahmini yapılmış ve trafik yoğunluğu seviyesi belirlenmeye çalışılmıştır. Diğer bağımsız değişkenlere kıyasla, rüzgar hızı ve sıcaklık değişkenlerinin hız üzerinde negatif ve yüksek oranda etkili olduğu, olası bir değişiklik durumunda sıcaklığın hızı en yüksek düzeyde etkileyeceği görülmüştür. Çalışmanın bulgularına göre hız bağımlı değişkeni ve, rüzgar hızı (-.645) bağımsız değişkeni arasında 0.05 anlamlılık düzeyinde, sıcaklık (.-714) bağımsız değişkeni ile de 0.01 anlamlılık düzeyinde yüksek bir korelasyon varken, nem (.308), saat (.307) ve hava durumu (.205) bağımsız değişkenleri ile de yine düzeyinde fakat zayıf bir düzeyde korelasyon vardır [@tacs2020yapay].Bu araştırmada, araç geçiş sayısının fazla olduğu bir karayolunda hız tahmini yapılarak, bu tahmin üzerinden ilgili yolda yaşanabilecek olası trafik yoğunluğunun tespit edilmesi amaçlanmıştır. Bağımlı değişken hız iken; bağımsız değişken olarak; sıcaklık, nem ve rüzgar hızı, hafta içi günler, gözlem yapılan mesai saatleri ve hava koşulu değişkenleri kullanılmıştır. Gün, saat ve hava koşulu kategorik değişkenleri; dummy değişken (kukla değişken) olarak belirlenmiş ve böylece toplamda 28 bağımsız değişken elde edilmiştir. Model 2 tane gizli katmanlı olarak düşünülmüştür. Böylece modelde, bağımsız değişkenlerden oluşan 28 girdi katmanı, 25' li olmak üzere 2 tane gizli katman, 1 tane de çıktı katmanı mevcuttur.Bir başka örnekte; 2005-2014 yılları arasında kentsel büyümeye bağlı olarak artan konut sayısının ana ulaşım ağında yarattığı trafik yoğunluğu ilişkisi İstanbul özelinde incelenmiştir. Bu amaçla İstanbul’da kentsel büyümenin yoğun olarak görüldüğü ilçeler (Konut bölgeleri) ile bu ilçeleri etkileyen ana ulaşım hatları belirlenmiştir. Geleceğe yönelik tahmin modellerinde kullanılabilen konut sayısı ile trafik yoğunluğu arasındaki ilişkiyi belirlemek amacıyla regresyon analizi yapılmış ve korelasyon katsayıları hesaplanmıştır. Analizler neticesinde, Avrupa yakasında özellikle Büyükçekmece, Beylikdüzü, Esenyurt ve Avcılar ilçelerindeki kentsel büyümeye bağlı olarak artan konutlaşmanın beraberinde trafik yoğunluğunu da getirdiği gözlemlenmektedir. Anadolu yakasında ise Sultanbeyli, Pendik ve Tuzla ilçelerinde son yıllardaki artan konutlaşmaya bağlı olarak bu ilçeleri etkileyen ana ulaşım hatlarında trafik yoğunluğunda artış olduğu gözlemlenmektedir [@polat2017kentsel].Trafik yoğunluğu @raj2016application 'nin çalışmasında belirli bir karayolu uzunluğunu işgal eden araç sayısını hesaplamak için otomatik sensörlerden elde edilen verilerle modeller geliştirme yöntemini kullanmıştır. Bu çalışmada tahmin için kullanılan teknikler iki makine öğrenme tekniğine dayanmaktadır: yapay sinir ağları (YSA) ve k-en yakın komşu (kNN).@al2016traffic tarafından hazırlanmış olan bu makalede, akıllı telefonların trafik yoğunluğunu ve hızını ölçmek için kullanılan yeni bir uygulama tanıtılmaktadır. Bu sistemde, iki araç arasında yer alan gözlemci tarafından araç sayımı gerçekleştirilir. Bu sayım, izleme verileriyle birlikte ölçülen yoğunluk ve ölçülen hız değerlerini verir. Seyahat hızı ve manuel trafik sayımları kullanılarak hesaplanan yoğunluk hesaplanır. Ölçülen yoğunluk, hesaplanan yoğunlukla karşılaştırılarak doğrulanır ve istatistiksel t-testi, iki yoğunluk arasındaki ortalama farkın %5 düzeyinde anlamlı olmadığını doğrular.")
+
+wordcloud(text, scale=c(5, 0.5), stopwords = turkish_stopwords)
+
 
 # Convert the list of words into a vector
 words <- unlist(words)
@@ -85,16 +86,14 @@ word_freq <- table(words)
 
 # Create a word cloud
 wordcloud(names(word_freq), freq = word_freq, scale = c(5, 0.5), random.order = FALSE, colors = blues9)
-stop_words <- c("ve", "ile")
 
 ```
 
+# Veri
 
+Veri seti İBB tarafından sunulan açık veri portalından çekilmiştir. <https://data.ibb.gov.tr/dataset/hourly-traffic-density-data-set> adresindeki veriler kullanılmıştır. Veri setinde herhangi bir işlem yapılmadan doğrudan ham veri üzerinden R Studio programında veriler analiz edilebilse de 120 MB'ı aşan bir dosya olduğu için GitHub'a yüklenemediğinden, veride 2023 Nisan ayının 16'sından sonraki günleri değerlendirmeye alınmıştır. Veri setinde 8 değişken, 200.000 adet gözlem bulunmaktadır.
 
-# Veri 
-Veri seti İBB tarafından sunulan açık veri portalından çekilmiştir. https://data.ibb.gov.tr/dataset/hourly-traffic-density-data-set adresindeki veriler kullanılmıştır. Veri setinde herhangi bir işlem yapılmadan doğrudan ham veri üzerinden R Studio programında veriler analiz edilebilse de 120 MB'ı aşan bir dosya olduğu için GitHub'a yüklenemediğinden, veride 2023 Nisan ayının 16'sından sonraki günleri değerlendirmeye alınmıştır.
-
-```{r}
+```{r SUMMARY}
 
 library(tidyverse)
 dt <- readr::read_delim(("data/traffic_density_202304.csv"), delim = ",", show_col_types = FALSE)
@@ -109,8 +108,6 @@ select(LONGITUDE, LATITUDE) %>%
 ```
 
 Özet veride enlem ve boylamın en uç noktaları (max ve min'ler) belirlenmiştir. Buradaki amaç, haritayı bu bölgeyle sınırlandırmaktır.
-
-
 
 # Yöntem ve Veri Analizi
 
@@ -149,6 +146,7 @@ dt %>%
              lab = TRUE)
 ```
 
+Bu grafikte değişkenlerin birbirleriyle korelasyonel ilişkileri gözükmektedir. Araçların hızı ile sayıları arasında negatif korelasyon bulunmaktadır.Buradan yoğun trafik bölgelerinde, araçların hızının genellikle düşük olduğu ve araç sayısının yüksek olduğu sonucuna varılmıştır.
 
 ```{r}
 library(ggplot2)
@@ -182,6 +180,8 @@ lon_max <- 29.64
 lat_min <- 40.77
 lat_max <- 41.34
 
+#Summary verilerinden alınmıştır.
+
 library(viridis)
 library(ggplot2)
 library(maps)
@@ -205,19 +205,19 @@ ggplot() +
 
 ```
 
-
-
-
 # Sonuç
-İstanbul'un farklı bölgelerindeki trafik yoğunluğu, araçların hızlarını ve sayılarını önemli ölçüde etkilemektedir. Yoğun trafik bölgelerinde, araçların hızı genellikle düşük olmakta ve araç sayısı yüksek olmaktadır. Bu durum, seyahat sürelerinin uzamasına ve trafik akışının yavaşlamasına neden olmaktadır. 
+
+İstanbul'un farklı bölgelerindeki trafik yoğunluğu, araçların hızlarını ve sayılarını önemli ölçüde etkilemektedir. Yoğun trafik bölgelerinde, araçların hızı genellikle düşük olmakta ve araç sayısı yüksek olmaktadır. Bu durum, seyahat sürelerinin uzamasına ve trafik akışının yavaşlamasına neden olmaktadır.
 
 Araştırmanın sonuçları, İstanbul'daki trafik yönetimi ve planlaması açısından önemli bir bilgi kaynağı sağlayacaktır. Bu çalışmanın bulguları, trafik sıkışıklığını hafifletmek, seyahat sürelerini azaltmak ve trafik kazalarını önlemek gibi hedefler doğrultusunda etkili politikaların geliştirilmesine yardımcı olabilir. Ayrıca, bu çalışma, bölgesel trafik yoğunluğunun araç hızları ve sayıları üzerindeki etkilerini anlamamıza ve gelecekteki trafik projeksiyonlarını yapmamıza yardımcı olacak önemli bir bilimsel katkı sunacaktır.
 
-**Kaynakça bölümü Rmarkdown tarafından otomatik olarak oluşturulmaktadır. Taslak dosyada Kaynakça kısmında herhangi bir değişikliğe gerek yoktur.** 
+**Kaynakça bölümü Rmarkdown tarafından otomatik olarak oluşturulmaktadır. Taslak dosyada Kaynakça kısmında herhangi bir değişikliğe gerek yoktur.**
 
-**_Taslakta bu cümleden sonra yer alan hiçbir şey silinmemelidir._**
+***Taslakta bu cümleden sonra yer alan hiçbir şey silinmemelidir.***
 
 \newpage
-# Kaynakça {#references}
-<div id="refs"></div>
 
+# Kaynakça {#references}
+
+::: {#refs}
+:::
