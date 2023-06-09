@@ -27,16 +27,15 @@ biblio-style: apalike
 abstract: |
   Bu makalede, İstanbul ilindeki bölgesel trafik yoğunluğunun araç hızları ve sayıları üzerinden nasıl dağıldığı incelenmektedir. Araştırma, yoğun trafik bölgelerinde araç hızlarının düşük olduğunu ve araç sayılarının yüksek olduğunu ortaya koymaktadır. Bu durum, seyahat sürelerinin uzamasına, trafik kazalarının artmasına ve sürücülerin stres düzeylerinin yükselmesine neden olmaktadır. Araştırma sonuçları, İstanbul'un trafik yönetimi ve planlaması için önemli bir bilgi kaynağı sunmaktadır. Bu çalışma, bölgesel trafik yoğunluğunun anlaşılmasına ve etkili politikaların geliştirilmesine katkı sağlamaktadır. İstanbul ilindeki trafik sorunlarına çözüm odaklı yaklaşım için bu araştırmanın sonuçları değerli bir kaynak olacaktır.
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = FALSE, echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
 <!-- ======================================================================= -->
-
 <!-- ============================== NOTLAR ================================= -->
-
 <!-- ======================================================================= -->
+[^1]: 21080744, [Github Repo](https://github.com/slymanb/final_01)
+
 
 # Giriş
 
